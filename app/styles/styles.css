@@ -11,9 +11,92 @@
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
-  font-family: Roboto;
 }
 
+
+#create-post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+
+  padding: 8px 16px;
+  margin: 0 16px;
+  align-self: stretch;
+
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+
+  & .form {
+    display: flex;
+    align-items: stretch;
+
+    flex-direction: column;
+    gap: 8px;
+
+    & label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.1pt;
+    }
+
+    & input {
+      align-self: stretch;
+      padding: 0.5rem;
+    }
+
+    & .main-field {
+      display: flex;
+      flex-direction: column;
+
+      & input {
+        padding-left: 1rem;
+        font-size: 110%;
+      }
+    }
+
+    & .form-row {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+    & .vertical-field {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      flex: 1 0 0;
+    }
+
+    /* Errors */
+    & div[id^="errors-for-"] {
+      color: #ff5d5d;
+    }
+
+    & button {
+      margin: 8px 0;
+
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      background-color: #0088cc;
+
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    & button:hover {
+      background-color: #56afdb;
+    }
+  }
+}
 
 #posts-list {
   display: flex;
