@@ -103,7 +103,7 @@ async function run() {
 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`✅ app ready: http://localhost:${port}`);
+    console.log(`✅ app ready: http://0.0.0.0:${port}`);
 
     if (process.env.NODE_ENV === "development") {
       broadcastDevReady(initialBuild);
@@ -113,7 +113,7 @@ async function run() {
   const metricsPort = process.env.METRICS_PORT || 3010;
 
   metricsApp.listen(metricsPort, () => {
-    console.log(`✅ metrics ready: http://localhost:${metricsPort}/metrics`);
+    console.log(`✅ metrics ready: http://0.0.0.0:${metricsPort}/metrics`);
   });
 
   async function reimportServer(): Promise<ServerBuild> {
