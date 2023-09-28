@@ -20,7 +20,7 @@ export default function PostCard({ post }: PostCardProps) {
           <div className="time-stamp">
             {timeAgo.format(post.createdAt, "round")}
           </div>
-          <i>i</i>
+          <span className="more material-symbols-outlined">more_vert</span>
         </div>
         <div className="title">{post.description}</div>
       </div>
@@ -28,11 +28,11 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="votes">
           <div className="votes-buttons">
             <button className="active">
-              <span></span>
+              <span className="material-symbols-outlined">arrow_upward</span>
             </button>
             <span>{post.upVotes - post.downVotes}</span>
             <button>
-              <span></span>
+              <span className="material-symbols-outlined">arrow_downward</span>
             </button>
           </div>
           <div className="individual-votes">

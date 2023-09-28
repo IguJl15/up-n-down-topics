@@ -19,10 +19,10 @@ type CreatePostDto = Pick<Post,
 
 export type InactivePostView = Pick<Post,
     "id" | 
-    "description" | 
     "active" | 
     "createdAt" |
-    "tags">
+  "tags"
+>;
 
 export function getPost({ id }: PostId) {
     return prisma.post.findFirst({

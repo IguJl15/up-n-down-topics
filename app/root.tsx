@@ -8,9 +8,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import stylesheet from "~/styles/styles.css"
 import TimeAgo from "javascript-time-ago";
 import pt from "javascript-time-ago/locale/pt";
+import stylesheet from "~/styles/styles.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -18,8 +18,8 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  TimeAgo.addLocale(pt)
-  TimeAgo.setDefaultLocale("pt")
+  TimeAgo.addLocale(pt);
+  TimeAgo.setDefaultLocale("pt");
 
   return (
     <html lang="en" className="h-full">
@@ -29,8 +29,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
-        <h2>Hello World</h2>
+      <body>
+        <h2>Up N Down Topics</h2>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
