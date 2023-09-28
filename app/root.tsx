@@ -1,6 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -9,20 +8,19 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
-import { getUser } from "~/session.server";
-import stylesheet from "~/tailwind.css";
+import stylesheet from "~/styles/styles.css"
+import TimeAgo from "javascript-time-ago";
+import pt from "javascript-time-ago/locale/pt";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ user: await getUser(request) });
-};
-
 export default function App() {
+  TimeAgo.addLocale(pt)
+  TimeAgo.setDefaultLocale("pt")
+
   return (
     <html lang="en" className="h-full">
       <head>
@@ -32,6 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <h2>Hello World</h2>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

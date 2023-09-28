@@ -1,0 +1,217 @@
+:root {
+  font-family: Roboto;
+}
+
+#posts-list {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+#post-card {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  align-self: stretch;
+
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+
+  & .main {
+    display: flex;
+    padding: 8px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+  }
+
+  & .main .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+
+    & .tags {
+      display: flex;
+      align-items: flex-start;
+      align-content: flex-start;
+      gap: 4px;
+      flex: 1 0 0;
+
+      flex-wrap: wrap;
+
+      & .tag-item {
+        padding: 4px 8px;
+        gap: 10px;
+
+        border-radius: 50px;
+        background: #ebebeb;
+
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    & .time-stamp {
+      color: #444;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px; /* 133.333% */
+      letter-spacing: 0.5px;
+    }
+  }
+
+  & .main .title {
+    align-self: stretch;
+    color: #000;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  & .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    row-gap: 8px;
+    align-self: stretch;
+    flex-wrap: wrap;
+
+    & .votes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      & .votes-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        & > span {
+          padding: 4px 8px;
+
+          color: #0a810e;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 143%;
+          letter-spacing: 0.1px;
+        }
+
+        & button {
+          display: flex;
+          padding: 4px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 28px;
+          border: none;
+          background: #efefef;
+
+          & span {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        & button:hover {
+          background-color: #d6d6d6;
+        }
+
+        & button.active {
+          background-color: #ffc000;
+          color: #000000;
+        }
+      }
+
+      & .individual-votes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: stretch;
+
+        & .values {
+          display: flex;
+          padding: 0px 4px;
+          justify-content: space-between;
+          align-items: center;
+          align-self: stretch;
+
+          & span {
+            color: #555;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 145%;
+            letter-spacing: 0.5px;
+          }
+        }
+
+        & .bars {
+          display: flex;
+          height: 4px;
+          justify-content: center;
+          align-items: center;
+          align-self: stretch;
+
+          & .bar {
+            align-self: stretch;
+          }
+
+          & .up {
+            background: #10e732;
+          }
+
+          & .down {
+            background: #dd2525;
+          }
+        }
+      }
+    }
+
+    & .user-info {
+      display: flex;
+      padding: 8px 0px;
+      align-items: center;
+      align-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+
+      & .info-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        color: #444;
+
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.5px;
+
+        & span {
+          width: 18px;
+          height: 18px;
+
+          border-radius: 10px;
+
+          background: #d6d6d6;
+        }
+      }
+    }
+  }
+}
