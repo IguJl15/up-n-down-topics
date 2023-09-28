@@ -59,15 +59,15 @@ export function getAllInactivePosts() {
     })
 }
 
-export function createPost(post: CreatePostDto) {
-    prisma.post.create({
-        data: {
-            ...post,
-            active: false,
-            upVotes: 0,
-            downVotes: 0,
-        }
-    })
+export async function createPost(post: CreatePostDto) {
+  await prisma.post.create({
+    data: {
+      ...post,
+      active: false,
+      upVotes: 0,
+      downVotes: 0,
+    },
+  });
 }
 
 export function updatePost(post: UpdatePostDto) { }

@@ -1,7 +1,28 @@
+import type { ActionFunction } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import type { CreatePostDto } from "~/models/post.server";
+import { createPost } from "~/models/post.server";
+
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+
+  const post: CreatePostDto = {
+    description: (formData.get("post")?.valueOf() as string) ?? "",
+    authorName: (formData.get("name")?.valueOf() as string) ?? "",
+    authorCity: (formData.get("city")?.valueOf() as string) ?? "",
+    authorCountry: (formData.get("country")?.valueOf() as string) ?? "",
+    tags: (formData.get("tags")?.valueOf() as string) ?? "",
+  };
+
+  await createPost(post);
+
+  return redirect("/");
+};
+
 export default function NewPost() {
   return (
     <div>
-      <form action="">
+      <form method="post">
         <div>
           <label htmlFor="post">Tópico</label>
           <input type="text" name="post" id="post" />
@@ -25,5 +46,5 @@ export default function NewPost() {
         <button type="submit">Criar</button>
       </form>
     </div>
-  )
+  );
 }
