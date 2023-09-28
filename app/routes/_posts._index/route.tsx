@@ -6,6 +6,8 @@ import type {
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { redirect } from "react-router";
+import NewPostForm from "~/components/new-post-form";
 import type {
   CreatePostDto,
   InactivePostView,
@@ -16,9 +18,8 @@ import {
   getAllActivePosts,
   getAllInactivePosts,
 } from "~/models/post.server";
-import PostCard from "../../components/post-card";
 import InactivePostCard from "../../components/inactive-post-card";
-import NewPostForm from "~/components/new-post-form";
+import PostCard from "../../components/post-card";
 // import { Link } from "@remix-run/react";
 
 export const links: LinksFunction = () => {
@@ -36,7 +37,7 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
 
   const post: CreatePostDto = {
-    description: (formData.get("post")?.valueOf() as string) ?? "",
+    description: (formData.get("title")?.valueOf() as string) ?? "",
     authorName: (formData.get("name")?.valueOf() as string) ?? "",
     authorCity: (formData.get("city")?.valueOf() as string) ?? "",
     authorCountry: (formData.get("country")?.valueOf() as string) ?? "",
