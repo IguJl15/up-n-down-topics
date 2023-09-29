@@ -1,5 +1,8 @@
+import type { Post } from ".prisma/client";
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
+import type { JsonifyObject } from "type-fest/source/jsonify";
+import type { InactivePostView } from "./models/post.server";
 
 const DEFAULT_REDIRECT = "/";
 
@@ -44,4 +47,59 @@ export function useMatchesData(
 
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
+}
+
+export function requestPassword(): string {
+  return prompt("Digite a chave mestra") ?? "";
+}
+
+export function toUnapprovedPost(
+  unapprovedPostJson: JsonifyObject<{
+    id: string;
+    active: boolean;
+    createdAt: Date;
+    tags: string;
+  }>,
+): InactivePostView {
+  return {
+    ...unapprovedPostJson,
+    createdAt: new Date(unapprovedPostJson.createdAt) ?? new Date(),
+  };
+}
+
+export function toPost(
+  postJson: JsonifyObject<{
+    id: string;
+    active: boolean;
+    createdAt: Date;
+    tags: string;
+    upVotes: number;
+    downVotes: number;
+    description: string;
+    authorName: string;
+    authorCity: string;
+    authorCountry: string;
+  }>,
+) {
+  return {
+    ...postJson,
+    upVotes: postJson.upVotes ?? 0,
+    downVotes: postJson.downVotes ?? 0,
+    createdAt: new Date(postJson.createdAt) ?? new Date(),
+  };
+}
+
+export function orderByTotalVotes(post: Post, next: Post): number {
+  if (post.upVotes + post.downVotes > next.upVotes + next.downVotes) {
+    return -1;
+  } else {
+    return +1;
+  }
+}
+
+export function orderByCreationTime(
+  post: { createdAt: Date },
+  next: { createdAt: Date },
+) {
+  return post.createdAt.getTime() > next.createdAt.getTime() ? -1 : 0;
 }
