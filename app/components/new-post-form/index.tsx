@@ -12,13 +12,13 @@ const schema = z.object({
 export default function NewPostForm() {
   return (
     <div id="create-post-form">
-      <h3>Compartilhe um opinião</h3>
+      <h3>Compartilhe uma opinião</h3>
       <Form className="form" schema={schema} method="post">
         {({ Field, Errors, Button }) => (
           <>
             <Field
               name="title"
-              label={undefined}
+              label="Tópico"
               placeholder="O que você quer expressar?"
               className="main-field"
             />

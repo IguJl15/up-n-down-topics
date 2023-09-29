@@ -1,9 +1,26 @@
-import type { Post } from "~/models/post.server";
 import TimeAgo from "javascript-time-ago";
+import type { Post } from "~/models/post.server";
+import { ToggleIconButton } from "./icon-button";
+import MenuButton from "./icon-button/menu-button";
 
-type PostCardProps = { post: Post };
+interface PostCardProps {
+  post: Post;
 
-export default function PostCard({ post }: PostCardProps) {
+  onUpVote: () => void;
+  onDownVote: () => void;
+
+  onDeleteButtonClicked: () => void;
+  onDeactivateButtonClicked: () => void;
+}
+
+export default function PostCard({
+  post,
+  onUpVote,
+  onDownVote,
+
+  onDeleteButtonClicked,
+  onDeactivateButtonClicked,
+}: PostCardProps) {
   const timeAgo = new TimeAgo("pt");
 
   return (
@@ -20,20 +37,36 @@ export default function PostCard({ post }: PostCardProps) {
           <div className="time-stamp">
             {timeAgo.format(post.createdAt, "round")}
           </div>
-          <span className="more material-symbols-outlined">more_vert</span>
+          <MenuButton
+            enabled={true}
+            items={{
+              Inativar: onDeactivateButtonClicked,
+              Excluir: onDeleteButtonClicked,
+            }}
+          >
+            <span className="more material-symbols-outlined">more_vert</span>
+          </MenuButton>
         </div>
         <div className="title">{post.description}</div>
       </div>
       <div className="footer">
         <div className="votes">
           <div className="votes-buttons">
-            <button className="active">
+            <ToggleIconButton
+              enabled={true}
+              onPressed={onUpVote}
+              selected={true}
+            >
               <span className="material-symbols-outlined">arrow_upward</span>
-            </button>
+            </ToggleIconButton>
             <span>{post.upVotes - post.downVotes}</span>
-            <button>
+            <ToggleIconButton
+              enabled={true}
+              onPressed={onDownVote}
+              selected={true}
+            >
               <span className="material-symbols-outlined">arrow_downward</span>
-            </button>
+            </ToggleIconButton>
           </div>
           <div className="individual-votes">
             <div className="bars">

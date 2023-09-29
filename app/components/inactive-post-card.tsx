@@ -1,9 +1,18 @@
 import TimeAgo from "javascript-time-ago";
 import type { InactivePostView } from "~/models/post.server";
+import MenuButton from "./icon-button/menu-button";
 
-type InactivePostCardProps = { post: InactivePostView };
+interface InactivePostCardProps {
+  post: InactivePostView;
+  onActivateButtonClicked: () => void;
+  onDeleteButtonClicked: () => void;
+}
 
-export default function InactivePostCard({ post }: InactivePostCardProps) {
+export default function InactivePostCard({
+  post,
+  onActivateButtonClicked,
+  onDeleteButtonClicked,
+}: InactivePostCardProps) {
   const timeAgo = new TimeAgo("pt");
   return (
     <div id="post-card" className="inactive">
@@ -18,8 +27,15 @@ export default function InactivePostCard({ post }: InactivePostCardProps) {
         <br />
         {timeAgo.format(post.createdAt, "round")}
       </div>
-
-      <span className="material-symbols-outlined">more_vert</span>
+      <MenuButton
+        enabled={true}
+        items={{
+          Avaliar: onActivateButtonClicked,
+          Excluir: onDeleteButtonClicked,
+        }}
+      >
+        <span className="more material-symbols-outlined">more_vert</span>
+      </MenuButton>
     </div>
   );
 }

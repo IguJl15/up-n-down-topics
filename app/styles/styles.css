@@ -13,7 +13,6 @@
     sans-serif;
 }
 
-
 #create-post-form {
   display: flex;
   flex-direction: column;
@@ -25,7 +24,7 @@
   align-self: stretch;
 
   border-radius: 8px;
-  background: #fff;
+  background: #eee;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 
   & .form {
@@ -44,12 +43,24 @@
 
     & input {
       align-self: stretch;
-      padding: 0.5rem;
+      padding: 0.65rem 0.5rem;
+
+      background-color: #fff;
+
+      border: solid #aaa 1px;
+      border-radius: 8px;
     }
 
     & .main-field {
+      margin: 1rem 0;
+
       display: flex;
       flex-direction: column;
+
+      & label {
+        font-size: 110%;
+        line-height: 32px;
+      }
 
       & input {
         padding-left: 1rem;
@@ -219,38 +230,6 @@
           line-height: 143%;
           letter-spacing: 0.1px;
         }
-
-        & button {
-          display: flex;
-          padding: 4px;
-          justify-content: center;
-          align-items: center;
-
-          border-radius: 28px;
-          border: none;
-          background: #efefef;
-
-          cursor: pointer;
-
-          & span {
-            width: 24px;
-            height: 24px;
-          }
-        }
-
-        & button:hover {
-          background-color: #d6d6d6;
-        }
-
-        & button.active {
-          background-color: #ffc000;
-          color: #000000;
-        }
-
-        & button.active:hover {
-          background-color: #ffd350;
-          color: #000000;
-        }
       }
 
       & .individual-votes {
@@ -337,4 +316,67 @@
     "wght" 400,
     "GRAD" 0,
     "opsz" 24;
+}
+
+#icon-button {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 18px;
+
+  background-color: hsl(0, 0%, 100%);
+
+  cursor: pointer;
+
+  &.selected {
+    background-color: hsl(45, 100%, 50%);
+  }
+}
+
+#icon-button:hover {
+  background-color: hsl(0, 0%, 93%);
+
+  &.selected {
+    background-color: hsl(45, 100%, 46%);
+  }
+}
+
+#icon-button:active {
+  background-color: hsl(0, 0%, 96%);
+
+  &.selected {
+    background-color: hsl(45, 100%, 48%);
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  background-color: white;
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  & .dropdown-item {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  & .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
 }
