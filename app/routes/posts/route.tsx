@@ -51,8 +51,9 @@ export const DE_ACTIVATE_HTTP_METHOD = "PUT";
 export const VOTE_POST_HTTP_METHOD = "PATCH";
 
 export const action: ActionFunction = async ({ request, params }) => {
-  console.log("ACTION posts");
   const formData = await request.formData();
+
+  await new Promise(resolve => setTimeout(resolve, 500 /* 0.5 seconds */));
 
   switch (request.method) {
     case "POST":
@@ -101,6 +102,9 @@ type LoaderData = {
 export const loader: LoaderFunction = async () => {
   const posts = await getAllActivePosts();
   const newPosts = await getAllUnapprovedPosts();
+
+  await new Promise(resolve => setTimeout(resolve, 500 /* 0.5 seconds */));
+
 
   return json({ posts, newPosts });
 };
