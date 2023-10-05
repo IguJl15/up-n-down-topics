@@ -87,5 +87,5 @@ export default function ViewPost() {
     }
   }, []);
 
-  return <div>ViewPost. data: {data?.post?.description.toString()}</div>;
+  return <></>;
 }

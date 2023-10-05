@@ -6,11 +6,11 @@ import type {
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
-  Outlet,
   useFetcher,
   useLoaderData,
   useNavigate,
 } from "@remix-run/react";
+import Greeting from "~/components/greeting";
 import NewPostForm from "~/components/new-post-form";
 import type {
   CreatePostDto,
@@ -154,8 +154,10 @@ export default function Index() {
 
   return (
     <main>
-      <Outlet />
-      <NewPostForm />
+      <div className="main-top" >
+        <Greeting />
+        <NewPostForm />
+      </div>
       <div id="posts-list">
         {activePosts.map((post) => (
           <PostCard
