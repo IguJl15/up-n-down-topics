@@ -30,7 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h2>Up N Down Topics</h2>
+        <h1>Up N Down Topics</h1>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

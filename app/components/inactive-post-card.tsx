@@ -15,27 +15,29 @@ export default function InactivePostCard({
 }: InactivePostCardProps) {
   const timeAgo = new TimeAgo("pt");
   return (
-    <div id="post-card" className="inactive">
-      <div>
-        <span className="material-symbols-outlined">lock</span>
-      </div>
+    <div className="post-card">
+      <div className="post-card-content inactive">
+        <div>
+          <span className="material-symbols-outlined">lock</span>
+        </div>
 
-      <div className="message">
-        Tópico oculto.
-        <br />
-        Aguardando aprovação
-        <br />
-        {timeAgo.format(post.createdAt, "round")}
+        <div className="message">
+          Tópico oculto.
+          <br />
+          Aguardando aprovação
+          <br />
+          {timeAgo.format(post.createdAt, "round")}
+        </div>
+        <MenuButton
+          enabled={true}
+          items={{
+            Avaliar: onActivateButtonClicked,
+            Excluir: onDeleteButtonClicked,
+          }}
+        >
+          <span className="more material-symbols-outlined">more_vert</span>
+        </MenuButton>
       </div>
-      <MenuButton
-        enabled={true}
-        items={{
-          Avaliar: onActivateButtonClicked,
-          Excluir: onDeleteButtonClicked,
-        }}
-      >
-        <span className="more material-symbols-outlined">more_vert</span>
-      </MenuButton>
     </div>
   );
 }

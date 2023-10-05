@@ -6,11 +6,11 @@ import type {
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
-  Outlet,
   useFetcher,
   useLoaderData,
   useNavigate,
 } from "@remix-run/react";
+import Greeting from "~/components/greeting";
 import NewPostForm from "~/components/new-post-form";
 import type {
   CreatePostDto,
@@ -51,7 +51,6 @@ export const DE_ACTIVATE_HTTP_METHOD = "PUT";
 export const VOTE_POST_HTTP_METHOD = "PATCH";
 
 export const action: ActionFunction = async ({ request, params }) => {
-  console.log("ACTION posts");
   const formData = await request.formData();
 
   switch (request.method) {
@@ -150,8 +149,10 @@ export default function Index() {
 
   return (
     <main>
-      <Outlet />
-      <NewPostForm />
+      <div className="main-top" >
+        <Greeting />
+        <NewPostForm />
+      </div>
       <div id="posts-list">
         {activePosts.map((post) => (
           <PostCard

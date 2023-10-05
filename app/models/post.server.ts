@@ -87,7 +87,8 @@ export async function createPost(post: CreatePostDto) {
 export async function votePost({ id, value }: VotePostDto) {
   const post = await prisma.post.findUnique({ where: { id } });
 
-  if (post?.active == false) return console.log("Post inativo");
+  if (post == null) return console.log("Post não existe")
+  if (post.active == false) return console.log("Post inativo");
 
   if (value > 0) {
     post.upVotes += 1;
